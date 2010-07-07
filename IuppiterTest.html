@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen">
+	<script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+	<!-- Your project file goes here -->
+	<script type="text/javascript" src="Iuppiter.js"></script>
+	<!-- Your tests file goes here -->
+<script type="text/javascript">
+test('jslzjb', function() {
+    var s = "Hello World!!!Hello World!!!Hello World!!!Hello World!!!";
+    for(var i = 0; i < 10; i++)
+        s += s;
+        
+    var c = Iuppiter.compress(s);
+	ok(c.length < s.length, c);
+        
+    var d = Iuppiter.decompress(c);
+    ok(d == s, d);
+    
+    // Compressed byte array can be converted into base64 to sumbit to server side to do something.
+    var b = Iuppiter.Base64.encode(c, true);
+        
+    var bb = Iuppiter.toByteArray(b);
+    var db = Iuppiter.decompress(Iuppiter.Base64.decode(bb, true));
+    ok(db == s, db);
+})
+</script>
+</head>
+
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+</body>
+</html>
