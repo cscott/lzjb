@@ -8,13 +8,13 @@ describe('Hello World!!!', function() {
         s += s;
     s = new Buffer(s, 'utf8');
 
-    var c = lzjb.compress(s);
+    var c = lzjb.compressFile(s);
     c = new Buffer(c);
     it('should be smaller when compressed', function() {
         assert.ok(c.length < s.length, c);
     });
 
-    var d = lzjb.decompress(c);
+    var d = lzjb.decompressFile(c);
     d = new Buffer(d);
 
     it('should decompress to the original string', function() {

@@ -4,7 +4,7 @@ define(['./lib/freeze', './lib/Iuppiter'], function(freeze, Iuppiter) {
 
   return freeze({
         version: "0.0.1",
-        compress: Iuppiter.compress,
-        decompress: Iuppiter.decompress
+        compressFile: Iuppiter.compressFile,
+        decompressFile: Iuppiter.decompressFile
   });
 });
