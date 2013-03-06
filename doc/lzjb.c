@@ -64,7 +64,7 @@ lzjb_compress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
 			copymap = dst;
 			*dst++ = 0;
 		}
-		if (src > (uchar_t *)s_start + s_len - MATCH_MAX) {
+		if (src > (uchar_t *)s_start + s_len - MATCH_MIN) {
 			*dst++ = *src++;
 			continue;
 		}
@@ -78,9 +78,12 @@ lzjb_compress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
 		if (cpy >= (uchar_t *)s_start && cpy != src &&
 		    src[0] == cpy[0] && src[1] == cpy[1] && src[2] == cpy[2]) {
 			*copymap |= copymask;
-			for (mlen = MATCH_MIN; mlen < MATCH_MAX; mlen++)
+			for (mlen = MATCH_MIN; mlen < MATCH_MAX; mlen++) {
+				if (src + mlen >= (uchar_t*)s_start + s_len)
+					break; /* CSA TWEAK */
 				if (src[mlen] != cpy[mlen])
 					break;
+			}
 			*dst++ = ((mlen - MATCH_MIN) << (NBBY - MATCH_BITS)) |
 			    (offset >> NBBY);
 			*dst++ = (uchar_t)offset;
