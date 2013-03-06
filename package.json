@@ -1,0 +1,31 @@
+{
+  "name": "lzjb",
+  "version": "0.0.1",
+  "author": "Bear, C. Scott Ananian",
+  "description": "pure JavaScript LZJB de/compression, for node.js, volo, and the browser.",
+  "keywords": ["lzjb", "compression", "decompression"],
+  "main": "main",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cscott/lzjb.git"
+  },
+  "license": "BSD",
+  "bin": {
+    "lzjb": "./bin/lzjb"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "amdefine": "~0.0.4",
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "amd": {},
+  "volo": {}
+}
