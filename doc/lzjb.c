@@ -75,6 +75,7 @@ lzjb_compress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
 		offset = (intptr_t)(src - *hp) & OFFSET_MASK;
 		*hp = (uint16_t)(uintptr_t)src;
 		cpy = src - offset;
+		if (offset == 0) { cpy -= OFFSET_MASK + 1; } /* CSA TWEAK */
 		if (cpy >= (uchar_t *)s_start && cpy != src &&
 		    src[0] == cpy[0] && src[1] == cpy[1] && src[2] == cpy[2]) {
 			*copymap |= copymask;
@@ -113,6 +114,7 @@ lzjb_decompress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
 		if (copymap & copymask) {
 			int mlen = (src[0] >> (NBBY - MATCH_BITS)) + MATCH_MIN;
 			int offset = ((src[0] << NBBY) | src[1]) & OFFSET_MASK;
+			if (offset==0) { offset=OFFSET_MASK+1; } /* CSA TWEAK */
 			src += 2;
 			if ((cpy = dst - offset) < (uchar_t *)d_start)
 				return (-1);

@@ -3,7 +3,7 @@ var lzjb = require('../');
 var fs = require('fs');
 
 describe('lzma file decode', function(){
-  ['sample0', 'sample1', 'sample2', 'sample3'/*, 'sample4'*/].forEach(function(f) {
+  ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
       it('should correctly decode '+f, function() {
           var compressedData = fs.readFileSync('test/'+f+'.lzjb');
           var referenceData = fs.readFileSync('test/'+f+'.ref');
@@ -16,7 +16,7 @@ describe('lzma file decode', function(){
 });
 
 describe('lzma file encode->decode', function(){
-  ['sample0', 'sample1', 'sample2', 'sample3'/*, 'sample4'*/].forEach(function(f) {
+  ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
       it('encoded '+f+' should correctly decode', function() {
           var referenceData = fs.readFileSync('test/'+f+'.ref');
           var data = lzjb.compressFile(referenceData);
