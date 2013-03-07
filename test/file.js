@@ -10,7 +10,7 @@ describe('lzjb file decode', function(){
           var data = lzjb.decompressFile(compressedData);
           // convert to buffer
           data = new Buffer(data);
-          assert.equal(data.toString('hex'), referenceData.toString('hex'));
+          assert.ok(data.toString('hex') === referenceData.toString('hex'));
       });
   });
 });
@@ -45,7 +45,7 @@ describe('lzjb file encode', function() {
           var data = lzjb.compressFile(referenceData);
           // convert to buffer
           data = new Buffer(data);
-          assert.equal(data.toString('hex'), compressedData.toString('hex'));
+          assert.ok(data.toString('hex') === compressedData.toString('hex'));
       });
   });
 });
