@@ -69,8 +69,9 @@ lzjb_compress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
 			continue;
 		}
 		hash = (src[0] << 16) + (src[1] << 8) + src[2];
-		hash += hash >> 9;
+		hash ^= hash >> 9; /* CSA TWEAK */
 		hash += hash >> 5;
+		hash ^= src[0]; /* CSA TWEAK */
 		hp = &lempel[hash & (LEMPEL_SIZE - 1)];
 		offset = (intptr_t)(src - *hp) & OFFSET_MASK;
 		*hp = (uint16_t)(uintptr_t)src;
