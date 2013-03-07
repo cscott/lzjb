@@ -56,9 +56,9 @@ See the tests in the `tests/` directory for further usage examples.
 ## Documentation
 
 `require('lzjb')` returns a `lzjb` object.  It contains two main
-methods.  The first is a function accepting one or two parameters:
+methods.  The first is a function accepting one, two or three parameters:
 
-`lzjb.compressFile = function(input, [output])`
+`lzjb.compressFile = function(input, [output], [Number compressionLevel])`
 
 The `input` argument can be a "stream" object (which must implement the
 `readByte` method), or a `Uint8Array`, `Buffer`, or array.
@@ -67,6 +67,11 @@ If you omit the second argument, `compressFile` will return a JavaScript
 array containing the byte values of the compressed data.  If you pass
 a second argument, it must be a "stream" object (which must implement the
 `writeByte` method).
+
+The third argument may be omitted, or a number between 1 and 9 indicating
+a compression level (1 being largest/fastest compression and 9 being
+smallest/slowest compression).  The default is `1`. `6` is about twice
+as slow but creates 10% smaller files.
 
 The second exported method is a function accepting one or two parameters:
 

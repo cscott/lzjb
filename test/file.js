@@ -17,16 +17,19 @@ describe('lzjb file decode', function(){
 
 describe('lzjb file encode->decode', function(){
   ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
-      it('encoded '+f+' should correctly decode', function() {
-          var referenceData = fs.readFileSync('test/'+f+'.ref');
-          var data = lzjb.compressFile(referenceData);
-          // convert to buffer
-          data = new Buffer(data);
-          // round trip
-          var data2 = lzjb.decompressFile(data);
-          // convert to buffer
-          data2 = new Buffer(data2);
-          assert.equal(referenceData.toString('hex'), data2.toString('hex'));
+      [null, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(level) {
+          var desc = (level===null) ? 'default' : ('-'+level);
+          it('encoded '+f+' should correctly decode at '+desc, function() {
+              var referenceData = fs.readFileSync('test/'+f+'.ref');
+              var data = lzjb.compressFile(referenceData, null, level);
+              // convert to buffer
+              data = new Buffer(data);
+              // round trip
+              var data2 = lzjb.decompressFile(data);
+              // convert to buffer
+              data2 = new Buffer(data2);
+              assert.ok(referenceData.toString('hex') === data2.toString('hex'));
+          });
       });
   });
 });
