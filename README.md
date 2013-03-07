@@ -1,6 +1,6 @@
 # lzjb
 
-`lzjb` is a fast pure-JavaScript implementation of LZJB
+`lzjb` is a fast pure JavaScript implementation of LZJB
 compression/decompression.  It was originally written by "Bear"
 based on the OpenSolaris C implementations.
 C. Scott Ananian cleaned up the source code and packaged it for `node`
@@ -89,6 +89,11 @@ the `writeByte` method.
 * http://en.wikipedia.org/wiki/LZJB Wikipedia article on LZJB compression
 * http://src.opensolaris.org/source/xref/onnv/onnv-gate/usr/src/uts/common/os/compress.c "compress" source code (describes LZJB algorithm)
 * http://cvs.opensolaris.org/source/xref/onnv/onnv-gate/usr/src/uts/common/fs/zfs/lzjb.c In-kernel implementation of LZJB
+
+## Other JavaScript compressors
+
+* https://github.com/cscott/lzma-purejs LZMA
+* https://github.com/cscott/seek-bzip Bzip2 (random-access decompression)
 
 ## License
 
