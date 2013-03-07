@@ -2,7 +2,7 @@ var assert = require("assert");
 var lzjb = require('../');
 var fs = require('fs');
 
-describe('lzma file decode', function(){
+describe('lzjb file decode', function(){
   ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
       it('should correctly decode '+f, function() {
           var compressedData = fs.readFileSync('test/'+f+'.lzjb');
@@ -15,7 +15,7 @@ describe('lzma file decode', function(){
   });
 });
 
-describe('lzma file encode->decode', function(){
+describe('lzjb file encode->decode', function(){
   ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
       it('encoded '+f+' should correctly decode', function() {
           var referenceData = fs.readFileSync('test/'+f+'.ref');
@@ -27,6 +27,22 @@ describe('lzma file encode->decode', function(){
           // convert to buffer
           data2 = new Buffer(data2);
           assert.equal(referenceData.toString('hex'), data2.toString('hex'));
+      });
+  });
+});
+
+describe('lzjb file encode', function() {
+  // ensure that our output is still byte-identical to (tweaked) C
+  // implementation. This helps protect us from breaking the compression
+  // when we attempt JavaScript optimizations.
+  ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
+      it('should correctly encode '+f, function() {
+          var referenceData = fs.readFileSync('test/'+f+'.ref');
+          var compressedData = fs.readFileSync('test/'+f+'.lzjb');
+          var data = lzjb.compressFile(referenceData);
+          // convert to buffer
+          data = new Buffer(data);
+          assert.equal(data.toString('hex'), compressedData.toString('hex'));
       });
   });
 });
