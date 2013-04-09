@@ -1,6 +1,6 @@
 {
   "name": "lzjb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Bear, C. Scott Ananian",
   "description": "pure JavaScript LZJB de/compression, for node.js, volo, and the browser.",
   "keywords": ["lzjb", "compression", "decompression"],
