@@ -1,5 +1,7 @@
 # lzjb
 
+[![Build Status](https://travis-ci.org/cscott/lzjb.png)](https://travis-ci.org/cscott/lzjb)
+
 `lzjb` is a fast pure JavaScript implementation of LZJB
 compression/decompression.  It was originally written by "Bear"
 based on the OpenSolaris C implementations.
