@@ -1,6 +1,6 @@
 # lzjb
 
-[![Build Status](https://travis-ci.org/cscott/lzjb.png)](https://travis-ci.org/cscott/lzjb)
+[![Build Status][1]][2] [![dependency status][3]][4] [![dev dependency status][5]][6]
 
 `lzjb` is a fast pure JavaScript implementation of LZJB
 compression/decompression.  It was originally written by "Bear"
@@ -134,3 +134,10 @@ the `writeByte` method.
 > CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 > OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 > OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+[1]: https://travis-ci.org/cscott/lzjb.png
+[2]: https://travis-ci.org/cscott/lzjb
+[3]: https://david-dm.org/cscott/lzjb.png
+[4]: https://david-dm.org/cscott/lzjb
+[5]: https://david-dm.org/cscott/lzjb/dev-status.png
+[6]: https://david-dm.org/cscott/lzjb#info=devDependencies
